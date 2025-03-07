@@ -13,6 +13,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Swagger (OpenAPI)
  * Kafka
  * DDD (Domain Driven Design)
+ * Microservices: Registry Service (Eureka), Config Service
  * PostgreSQL
  * Postman
  * DBeaver
@@ -24,3 +25,11 @@ The **goal** of this project is to create a **microservices** system using **Spr
 ### Microservices system arquitecture:
  
 ![Alt text](readme-screenshots/01-microservices-arquitecture.png?raw=true "Microservices system arquitecture")
+
+### Screenshots:
+
+Eureka Server registered some instances of companies microservice:
+![Alt text](readme-screenshots/02-microservices-eureka.png?raw=true "Eureka Server")
+
+Swagger (OpenAPI) for companies microservice:
+![Alt text](readme-screenshots/03-microservices-swagger-openapi.png?raw=true "Swagger (OpenAPI)")
