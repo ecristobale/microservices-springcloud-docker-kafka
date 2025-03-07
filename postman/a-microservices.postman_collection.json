@@ -426,14 +426,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/Facebook",
+							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/Ecristobale",
 							"host": [
 								"{{webSiteCompaniesMsRoute}}"
 							],
 							"path": [
 								"companies-crud",
 								"company",
-								"Facebook"
+								"Ecristobale"
 							]
 						}
 					},
@@ -520,14 +520,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/DebuggeandoIdeas",
+							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/Ecristobale",
 							"host": [
 								"{{webSiteCompaniesMsRoute}}"
 							],
 							"path": [
 								"companies-crud",
 								"company",
-								"DebuggeandoIdeas"
+								"Ecristobale"
 							]
 						}
 					},
