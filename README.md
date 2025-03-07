@@ -33,3 +33,6 @@ Eureka Server registered some instances of companies microservice:
 
 Swagger (OpenAPI) for companies microservice:
 ![Alt text](readme-screenshots/03-microservices-swagger-openapi.png?raw=true "Swagger (OpenAPI)")
+
+GitHub project with .yml files (profiles: default, prod and qa) for config-server:
+![Alt text](readme-screenshots/04-microservices-config-server-github-yml.png?raw=true "GitHub .yml files for Config Server")
