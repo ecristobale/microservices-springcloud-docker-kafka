@@ -1,10 +1,14 @@
 package com.ecristobale.report_ms.services;
 
 import com.ecristobale.report_ms.helpers.ReportHelper;
+import com.ecristobale.report_ms.models.Company;
 import com.ecristobale.report_ms.repositories.CompaniesRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +25,15 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public String saveReport(String nameReport) {
+        var company = Company.builder()
+                .name("test")
+                .logo("logo")
+                .founder("test")
+                .foundationDate(LocalDate.now())
+                .webSites(List.of())
+                .build();
+
+        this.companiesRepository.postByName(company);
         return "Report " + nameReport + " has been saved";
     }
 
