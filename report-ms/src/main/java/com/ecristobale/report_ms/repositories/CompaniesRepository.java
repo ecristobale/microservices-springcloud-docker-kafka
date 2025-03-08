@@ -15,4 +15,7 @@ public interface CompaniesRepository {
 
     @GetMapping("/companies-crud/company/{name}")
     Optional<Company> getByName(@PathVariable String name);
+
+//    @GetMapping("/companies-crud/company/{name}")
+//    Optional<Company> getByName(@PathVariable String name);
 }

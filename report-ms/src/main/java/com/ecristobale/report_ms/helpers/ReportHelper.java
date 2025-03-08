@@ -1,5 +1,6 @@
 package com.ecristobale.report_ms.helpers;
 
+import com.ecristobale.report_ms.models.Company;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,9 +12,12 @@ public class ReportHelper {
     @Value("${report.template}")
     private String reportTemplate;
 
-    public String readTemplate() {
-        System.out.println("Reading template from " + this.reportTemplate);
+    public String readTemplate(Company company) {
         //log.info("Reading template from {}", reportTemplate);
-        return "";
+        return this.reportTemplate
+                .replace("{company}", company.getName())
+                .replace("{foundation_date}", company.getFoundationDate().toString())
+                .replace("{founder}", company.getFounder())
+                .replace("{web_sites}", company.getWebSites().toString());
     }
 }

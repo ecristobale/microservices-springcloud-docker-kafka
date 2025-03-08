@@ -16,8 +16,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public String makeReport(String name) {
-        this.reportHelper.readTemplate();
-        return this.companiesRepository.getByName(name).orElseThrow().getName();
+        return this.reportHelper.readTemplate(this.companiesRepository.getByName(name).orElseThrow());
     }
 
     @Override
