@@ -2,7 +2,7 @@ spring:
   application:
     name: report-ms
   profiles:
-    default: default
+    active: default
   config:
     import: "optional:configserver:http://localhost:7777"
 server:
@@ -14,4 +14,4 @@ eureka:
     instance-id: "${spring.application.name}:${random.value}"
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/spring.application.name=report-ms
+      defaultZone: http://localhost:8761/eureka/

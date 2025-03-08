@@ -13,7 +13,6 @@ public class LoadBalancerConfiguration {
         log.info("Configuring load balancer");
         return ServiceInstanceListSupplier.builder()
                 .withBlockingDiscoveryClient()
-                .withSameInstancePreference()
                 .build(context);
     }
 }
