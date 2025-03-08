@@ -22,7 +22,12 @@ public class ReportController {
 
     @PostMapping()
     public ResponseEntity<String> postReport(@RequestBody String report) {
-        var response = this.reportService.saveReport(report);
-        return ResponseEntity.ok("OK");
+        return ResponseEntity.ok(this.reportService.saveReport(report));
+    }
+
+    @DeleteMapping(path = "{name}")
+    public ResponseEntity<Void> deleteReport(@PathVariable String name) {
+        this.reportService.deleteReport(name);
+        return ResponseEntity.noContent().build();
     }
 }

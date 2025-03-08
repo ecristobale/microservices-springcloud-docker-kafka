@@ -2,13 +2,16 @@ package com.ecristobale.report_ms.services;
 
 import com.ecristobale.report_ms.helpers.ReportHelper;
 import com.ecristobale.report_ms.models.Company;
+import com.ecristobale.report_ms.models.WebSite;
 import com.ecristobale.report_ms.repositories.CompaniesRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -24,21 +27,26 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public String saveReport(String nameReport) {
+    public String saveReport(String report) {
+        var format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        var placeholders = this.reportHelper.getPlaceHoldersFromTemplate(report);
+        var webSites = Stream.of(placeholders.get(3))
+                .map(webSite -> WebSite.builder().name(webSite).build())
+                .toList();
+
         var company = Company.builder()
-                .name("test")
-                .logo("logo")
-                .founder("test")
-                .foundationDate(LocalDate.now())
-                .webSites(List.of())
+                .name(placeholders.get(0))
+                .foundationDate(LocalDate.parse(placeholders.get(1), format))
+                .founder(placeholders.get(2))
+                .webSites(webSites)
                 .build();
 
         this.companiesRepository.postByName(company);
-        return "Report " + nameReport + " has been saved";
+        return "Saved";
     }
 
     @Override
     public void deleteReport(String name) {
-        System.out.println("Report " + name + " has been deleted");
+        this.companiesRepository.deleteByName(name);
     }
 }
