@@ -13,7 +13,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Swagger (OpenAPI)
  * Kafka
  * DDD (Domain Driven Design)
- * Microservices: Registry Service (Eureka), Config Service
+ * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer
  * PostgreSQL
  * Postman
  * DBeaver
@@ -28,11 +28,14 @@ The **goal** of this project is to create a **microservices** system using **Spr
 
 ### Screenshots:
 
-Eureka Server registered some instances of companies microservice:
+* Eureka Server registered some instances of companies microservice:
 ![Alt text](readme-screenshots/02-microservices-eureka.png?raw=true "Eureka Server")
 
-Swagger (OpenAPI) for companies microservice:
+* Swagger (OpenAPI) for companies microservice:
 ![Alt text](readme-screenshots/03-microservices-swagger-openapi.png?raw=true "Swagger (OpenAPI)")
 
-GitHub project with .yml files (profiles: default, prod and qa) for config-server:
+* GitHub project with .yml files (profiles: default, prod and qa) for config-server:
 ![Alt text](readme-screenshots/04-microservices-config-server-github-yml.png?raw=true "GitHub .yml files for Config Server")
+
+* Feign with Load Balancer to communicate between microservices:
+![Alt text](readme-screenshots/05-microservices-feign-with-load-balancer.png?raw=true "Feign with Load Balancer")
