@@ -26,8 +26,8 @@ public class GatewayBeans { //GatewayConfig
 //                .build();
 //    }
 
-//    @Profile(value = "eureka-on")
     @Bean
+    @Profile("eureka-on")
     public RouteLocator routeLocatorEurekaOn(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(route -> route
