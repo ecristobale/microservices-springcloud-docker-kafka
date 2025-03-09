@@ -13,7 +13,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Swagger (OpenAPI)
  * Kafka
  * DDD (Domain Driven Design)
- * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway
+ * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
  * PostgreSQL
  * Postman
  * DBeaver
