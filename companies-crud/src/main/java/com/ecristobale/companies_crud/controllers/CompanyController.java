@@ -24,6 +24,12 @@ public class CompanyController {
     @GetMapping(path = "{name}")
     public ResponseEntity<Company> get(@PathVariable String name) {
         log.info("GET: company {}", name);
+//        Force timeout for testing circuit breaker
+//        try {
+//            Thread.sleep(7000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         return ResponseEntity.ok(this.companyService.readByName(name));
     }
 
