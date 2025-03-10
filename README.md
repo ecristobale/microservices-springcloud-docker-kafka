@@ -16,7 +16,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
  * DBs: PostgreSQL and MongoDB
  * Postman
- * DBeaver and 3t Studio
+ * DBeaver and Studio 3t
  * IntelliJ
  * Visual Studio Code
  * Sourcetree
@@ -39,3 +39,6 @@ The **goal** of this project is to create a **microservices** system using **Spr
 
 * Feign with Load Balancer to communicate between microservices:
 ![Alt text](readme-screenshots/05-microservices-feign-with-load-balancer.png?raw=true "Feign with Load Balancer")
+
+* Spring Cloud Streams with Kafka: consuming Kafka message and saving it to MongoDB
+![Alt text](readme-screenshots/06-microservices-kafka-mongo.png?raw=true "Consuming Kafka message and saving it to MongoDB")
