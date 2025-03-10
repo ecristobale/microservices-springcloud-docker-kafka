@@ -12,7 +12,7 @@ spring:
           brokers: localhost:9092
       function:
         bindings:
-          consumerReport-out-0:
+          consumerReport-out-0: # consumerReport-out-0 -> consumerReport <- consumerReport-in-0
             destination: consumerReport
 server:
   servlet:
