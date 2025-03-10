@@ -2,6 +2,8 @@ package com.ecristobale.companies_crud.controllers;
 
 import com.ecristobale.companies_crud.entities.Company;
 import com.ecristobale.companies_crud.services.CompanyService;
+//import io.micrometer.core.annotation.Timed;
+//import io.micrometer.observation.annotation.Observed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,8 @@ public class CompanyController {
 
     @Operation(summary = "Get a company given a company name")
     @GetMapping(path = "{name}")
+//    @Observed(name = "company.name")
+//    @Timed(value = "company.name")
     public ResponseEntity<Company> get(@PathVariable String name) {
         log.info("GET: company {}", name);
 //        Force timeout for testing circuit breaker
@@ -35,6 +39,8 @@ public class CompanyController {
 
     @Operation(summary = "Save in DB a company given a company body")
     @PostMapping
+//    @Observed(name = "company.save")
+//    @Timed(value = "company.save")
     public ResponseEntity<Company> post(@RequestBody Company company) {
         log.info("POST: company {}", company.getName());
         return ResponseEntity.created(
