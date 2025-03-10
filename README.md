@@ -11,12 +11,12 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Spring Cloud
  * Docker
  * Swagger (OpenAPI)
- * Kafka
+ * Spring Cloud Streams with Kafka
  * DDD (Domain Driven Design)
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
- * PostgreSQL
+ * DBs: PostgreSQL and MongoDB
  * Postman
- * DBeaver
+ * DBeaver and 3t Studio
  * IntelliJ
  * Visual Studio Code
  * Sourcetree
