@@ -3,6 +3,7 @@ package com.ecristobale.auth_server.services;
 import com.ecristobale.auth_server.dtos.TokenDto;
 import com.ecristobale.auth_server.dtos.UserDto;
 import com.ecristobale.auth_server.entities.UserEntity;
+import com.ecristobale.auth_server.helpers.JwtHelper;
 import com.ecristobale.auth_server.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,19 +17,30 @@ import org.springframework.web.server.ResponseStatusException;
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtHelper jwtHelper;
 
     private static final String USER_EXCEPTION_MSG = "Error to auth user";
 
+    // 1st method: Validating the password introduced in Login
+    //             401 Unauthorized status code is returned if the password is not valid
+    //             Creating signed token
     @Override
     public TokenDto login(UserDto userDto) {
-        return null;
+        final var userFromDB = this.userRepository.findByUsername(userDto.getUsername())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, USER_EXCEPTION_MSG));
+        this.validPassword(userDto, userFromDB);
+
+        return TokenDto.builder().accessToken(this.jwtHelper.createToken(userFromDB.getUsername())).build();
     }
 
     @Override
     public TokenDto validateToken(TokenDto token) {
-        return null;
+        if (this.jwtHelper.validateToken(token.getAccessToken())) {
+            return TokenDto.builder().accessToken(token.getAccessToken()).build();
+        }
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, USER_EXCEPTION_MSG);
     }
 
     // 1st: Method for validating the password introduced in Login
