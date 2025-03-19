@@ -1,2 +1,3 @@
+-- usertest usertest
 INSERT INTO user_info (username, password)
-    VALUES ('default', '$2a$10$H6zpX00a3pZ3Yprw7Aj7jOSwkwPNdI0TLf2hndxWtt8p5FsIi.qzG');
+    VALUES ('usertest', '$2a$10$2wsLYgjlmVUB4g2Qgk0wKuYYXpXKhrPWEwc2cTiPhdmYeQa1scuvm');

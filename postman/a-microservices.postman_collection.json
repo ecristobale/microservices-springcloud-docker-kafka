@@ -15,8 +15,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"usertest\",\r\n    \"password\": \"usertest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{authMsRoute}}/auth-server/auth/login",
@@ -39,7 +44,7 @@
 						"header": [
 							{
 								"key": "accessToken",
-								"value": "eeJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZWZhdWx0IiwiaWF0IjoxNzA1ODYzNDIxLCJleHAiOjE3MDU4NjcwMjF9.MGJJG7mOpLyCU2AdhtvYkbE8yF-y36f8dsT1U4Grx5qX8dcZmejMcyPH8bH7ILxQCN1L0YKoN5t1KWp_a6Hfaw",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VydGVzdCIsImlhdCI6MTc0MjM5NDcxNCwiZXhwIjoxNzQyMzk4MzE0fQ.FiUQFoIODH1xx-rT3EPHpzkxgY6HPgnF5QHNusiVnrURf6k1icGhdbyFVA2lobXZSrBfL4YNvkHJKKSxoV1W2g",
 								"type": "text"
 							}
 						],
@@ -80,14 +85,43 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{gatewayRoute}}/companies-crud/company/Microsoft",
+							"raw": "{{gatewayRoute}}/companies-crud/company/Ecristobale",
 							"host": [
 								"{{gatewayRoute}}"
 							],
 							"path": [
 								"companies-crud",
 								"company",
-								"Microsoft"
+								"Ecristobale"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkZWZhdWx0IiwiaWF0IjoxNzA1OTQ0Njk2LCJleHAiOjE3MDU5NDgyOTZ9.L8bjsrDov9Tc1E6iQruVMsURCT46K93lwd03Y7-2f-9N-uI3QYhV6FMN_EWBnCh6yri5PJDGtvUtjhrPHM4VsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{gatewayRoute}}/companies-crud/company/EcristobaleGateway",
+							"host": [
+								"{{gatewayRoute}}"
+							],
+							"path": [
+								"companies-crud",
+								"company",
+								"EcristobaleGateway"
 							]
 						}
 					},
@@ -262,7 +296,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"DebuggeandoIdeas\",\n    \"founder\": \"Rene Calderon\",\n    \"Logo\": \"http:/debuggeandoideas/logo\",\n    \"foundationDate\": \"25/08/2021\",\n    \"webSites\": [\n        {\n            \"name\": \"Debuggeando ideas youtebe\",\n            \"category\": \"EDUCATION\",\n            \"description\": \"Ia a education chanel\"\n        },\n               {\n            \"name\": \"Debuggeando ideas Udemy\",\n            \"category\": \"EDUCATION\",\n            \"description\": \"Ia a education chanel\"\n        }\n\n    ]\n}",
+							"raw": "{\n    \"name\": \"EcristobaleGateway\",\n    \"founder\": \"Ecristobale\",\n    \"Logo\": \"http:/ecristobale/logo\",\n    \"foundationDate\": \"25/08/2018\",\n    \"webSites\": [\n        {\n            \"name\": \"Ecristobale Udemy2\",\n            \"category\": \"EDUCATION\",\n            \"description\": \"Is an education chanel\"\n        },\n               {\n            \"name\": \"Ecristobale GitHub2\",\n            \"category\": \"EDUCATION\",\n            \"description\": \"Is an education chanel\"\n        }\n\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -400,13 +434,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{configServerRoute}}/companies-crud/default",
+							"raw": "{{configServerRoute}}/companies-crud/prod",
 							"host": [
 								"{{configServerRoute}}"
 							],
 							"path": [
 								"companies-crud",
-								"default"
+								"prod"
 							]
 						}
 					},
@@ -426,14 +460,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/Ecristobale",
+							"raw": "{{webSiteCompaniesMsRoute}}/companies-crud/company/Microsoft",
 							"host": [
 								"{{webSiteCompaniesMsRoute}}"
 							],
 							"path": [
 								"companies-crud",
 								"company",
-								"Ecristobale"
+								"Microsoft"
 							]
 						}
 					},
