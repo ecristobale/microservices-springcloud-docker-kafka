@@ -14,6 +14,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Spring Cloud Streams with Kafka
  * DDD (Domain Driven Design)
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
+ * Spring Security Oauth2 + JWT
  * DBs: PostgreSQL and MongoDB
  * Postman
  * DBeaver and Studio 3t

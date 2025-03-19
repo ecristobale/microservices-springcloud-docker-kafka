@@ -53,6 +53,7 @@ public class JwtHelper {
         return resolver.apply(this.signToken(token));
     }
 
+    // Sign token for integrity and authenticity
     private Claims signToken(String token) {
         return Jwts
                 .parserBuilder()
