@@ -16,7 +16,7 @@ import java.util.function.Function;
 @Slf4j
 public class JwtHelper {
 
-    @Value("")
+    @Value("${application.jwt.secret}")
     private String jwtSecret;
 
     public String createToken(String username) {
