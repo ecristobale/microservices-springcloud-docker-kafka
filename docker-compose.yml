@@ -154,3 +154,15 @@ services:
       environment:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
         CONFIG_SERVER_HOST: http://ms-config-server:7777
+
+    ms-companies-fallback:
+      image: ms-companies-fallback:latest
+      container_name: ms-companies-fallback
+      restart: always
+      ports:
+        - "8787:8787"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
