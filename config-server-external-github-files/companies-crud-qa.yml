@@ -1,0 +1,6 @@
+db:
+  username: admin-qa
+  maximum-pool-size: 5
+  connection-timeout: 20000
+  url: jdbc:postgresql://localhost:5234/companies-qa
+  password: 'sdfl348EOIERUIO'
