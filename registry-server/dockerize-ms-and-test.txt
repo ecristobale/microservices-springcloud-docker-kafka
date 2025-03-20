@@ -15,4 +15,8 @@
 10- Copy test-ms container's ID
 11- Stop container: docker container stop <container_id>
 12- Remove container: docker container rm <container_id>
+13- Add to docker-compose.yml:
+        set image (created image name that can be checked with command: docker images)
+        set ports (your_port:container_port)
+14- Run docker-compose: (previously: docker compose down) docker compose up
 
