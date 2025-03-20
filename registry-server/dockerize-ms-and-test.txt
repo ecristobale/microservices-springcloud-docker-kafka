@@ -1,9 +1,9 @@
 01- Create jar in /target with: mvn clean install -DskipTests=true
 02- Configure Dockerfile:
-        set JDK version
-        set volume
-        set target: .jar file
-        set entrypoint
+        set JDK version: FROM eclipse-temurin:21-jdk
+        set volume: VOLUME /tmp
+        set target .jar: COPY target/*.jar app.jar (COPY target/registry-server-0.0.1-SNAPSHOT.jar app.jar)
+        set entrypoint: ENTRYPOINT ["java","-jar","/app.jar"]
 03- Build docker image: docker build -t ms-registry-server:latest .
 04- Check created image with: docker images
 05- Copy image id or name (ms-registry-server)

@@ -129,3 +129,14 @@ services:
       restart: always
       ports:
         - "8761:8761"
+
+    ms-config-server:
+      image: ms-config-server:latest
+      container_name: ms-config-server
+      restart: always
+      ports:
+        - "7777:7777"
+      depends_on:
+        - ms-registry-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
