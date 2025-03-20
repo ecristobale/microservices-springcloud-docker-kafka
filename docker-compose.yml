@@ -141,3 +141,16 @@ services:
       environment:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
         # add git access token aswell
+
+    ms-companies:
+      image: ms-companies:latest
+      container_name: ms-companies
+      restart: always
+      ports:
+        - "8081:8081"
+      depends_on:
+        - ms-config-server
+        - db
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: http://ms-config-server:7777
