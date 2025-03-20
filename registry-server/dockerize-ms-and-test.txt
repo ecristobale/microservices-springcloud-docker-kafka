@@ -1,0 +1,18 @@
+01- Create jar in /target with: mvn clean install -DskipTests=true
+02- Configure Dockerfile:
+        set JDK version
+        set volume
+        set target: .jar file
+        set entrypoint
+03- Build docker image: docker build -t ms-registry-server:latest .
+04- Check created image with: docker images
+05- Copy image id or name (ms-registry-server)
+                          -p [your_port]:[container_port]
+06- Run docker image: docker run -p 8761:8761 --name test-ms <image_id/image_name>
+07- Test in local browser: http://localhost:8761/
+08- Close from terminal: Ctrl + C
+09- List containers: docker container ls -a
+10- Copy test-ms container's ID
+11- Stop container: docker container stop <container_id>
+12- Remove container: docker container rm <container_id>
+
