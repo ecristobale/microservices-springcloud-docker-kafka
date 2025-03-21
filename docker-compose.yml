@@ -192,3 +192,15 @@ services:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
         MONGO_HOST: 'mongo-db'
         BROKER_URL: 'msg-broker:9092'
+
+    ms-auth-server:
+      image: ms-auth:latest
+      container_name: ms-auth-server
+      restart: always
+      ports:
+        - "3030:3030"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
