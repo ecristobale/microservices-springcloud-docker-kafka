@@ -166,3 +166,17 @@ services:
       environment:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
         CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+
+    ms-report:
+      image: ms-report:latest
+      container_name: ms-report
+      restart: always
+      ports:
+        - "7070:7070"
+      depends_on:
+        - ms-config-server
+        - kafka
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+        BROKER_URL: 'http://msg-broker:9092'
