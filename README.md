@@ -1,4 +1,4 @@
-# Microservices with Spring Cloud, Docker, DDD (Domain Driven Design), Kafka, Swagger (OpenAPI), PostgreSQL, Spring Boot 3
+# Microservices with Spring Cloud, Docker, Kafka, Swagger (OpenAPI), PostgreSQL, Spring Boot 3
 
 ## DEVELOPER
  * Eduardo Cristóbal
@@ -9,10 +9,9 @@
 ## DESCRIPTION
 The **goal** of this project is to create a **microservices** system using **Spring Boot 3** and **Java 17** . The following technologies and tools are used:
  * Spring Cloud
- * Docker
  * Swagger (OpenAPI)
  * Spring Cloud Streams with Kafka
- * DDD (Domain Driven Design)
+ * Docker: dockerized each microservice and resource (Kafka, Mongo DB, Postgre DB)
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
  * Spring Security Oauth2 + JWT
  * DBs: PostgreSQL and MongoDB
@@ -43,3 +42,9 @@ The **goal** of this project is to create a **microservices** system using **Spr
 
 * Spring Cloud Streams with Kafka: consuming Kafka message and saving it to MongoDB
 ![Alt text](readme-screenshots/06-microservices-kafka-mongo.png?raw=true "Consuming Kafka message and saving it to MongoDB")
+
+* Dockerized each ms and resource from docker-compose:
+![Alt text](readme-screenshots/07-docker-view-compose.png?raw=true "Dockerized each ms and resource")
+
+* Dockerized each ms and resource from Docker desktop:
+![Alt text](readme-screenshots/08-docker-view-desktop.png?raw=true "Dockerized each ms and resource")
