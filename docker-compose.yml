@@ -204,3 +204,14 @@ services:
       environment:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
         CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+
+    ms-gateway:
+      image: image-ms-gateway:latest
+      container_name: ms-gateway
+      restart: always
+      ports:
+        - "4040:4040"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
