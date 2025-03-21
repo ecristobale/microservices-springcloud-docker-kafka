@@ -139,7 +139,7 @@ services:
         - ms-registry-server
       environment:
         EUREKA_URL: http://ms-registry-server:8761/eureka/
-        # add git access token aswell
+        GIT_TOKEN: # add git access token aswell
 
     ms-companies:
       image: ms-companies:latest
