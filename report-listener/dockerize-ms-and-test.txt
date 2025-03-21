@@ -1,0 +1,21 @@
+01- Create jar in /target with: mvn clean install -DskipTests=true
+02- Configure Dockerfile:
+        set JDK version: FROM eclipse-temurin:21-jdk-alpine
+        set volume: VOLUME /tmp
+        set target .jar: COPY target/*.jar app.jar (COPY target/report-listener-0.0.1-SNAPSHOT.jar app.jar)
+        set environment: ENV EUREKA_URL=null
+        set environment: ENV CONFIG_SERVER_HOST=null
+        set environment: ENV BROKER_URL=null
+        set entrypoint: ENTRYPOINT ["java","-jar","/app.jar"]
+03- Build docker image: docker build -t image-report-listener:latest .
+04- Check created image with: docker images
+05- Copy image id or name (image-report-listener)
+06- Add to docker-compose.yml:
+        set image (created image name that can be checked with command: docker images)
+        set ports (your_port:container_port)
+        set depends_on: - ms-config-server (registry-server too but not necessary)
+                        - kafka
+        set environment: EUREKA_URL: http://ms-registry-server:8761/eureka/
+                         CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+07- Run docker-compose: (previously: docker compose down) docker compose up
+
