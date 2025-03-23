@@ -35,7 +35,7 @@ services:
         KAFKA_BROKER_ID: 1
         KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
         KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-        KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+        KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://msg-broker:9092,PLAINTEXT_INTERNAL://msg-broker:29092
         KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
         KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
         KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
@@ -122,94 +122,94 @@ services:
     #   ports:
     #     - "9411:9411"
 
-    # ms-registry-server:
-    #   image: ms-registry-server:latest
-    #   container_name: ms-registry-server
-    #   restart: always
-    #   ports:
-    #     - "8761:8761"
+    ms-registry-server:
+      image: ms-registry-server:latest
+      container_name: ms-registry-server
+      restart: always
+      ports:
+        - "8761:8761"
 
-    # ms-config-server:
-    #   image: ms-config-server:latest
-    #   container_name: ms-config-server
-    #   restart: always
-    #   ports:
-    #     - "7777:7777"
-    #   depends_on:
-    #     - ms-registry-server
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     GIT_TOKEN: # add git access token aswell
+    ms-config-server:
+      image: ms-config-server:latest
+      container_name: ms-config-server
+      restart: always
+      ports:
+        - "7777:7777"
+      depends_on:
+        - ms-registry-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        GIT_TOKEN: # add git access token aswell
 
-    # ms-companies:
-    #   image: ms-companies:latest
-    #   container_name: ms-companies
-    #   restart: always
-    #   depends_on:
-    #     - ms-config-server
-    #     - db
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     CONFIG_SERVER_HOST: http://ms-config-server:7777
+    ms-companies:
+      image: ms-companies:latest
+      container_name: ms-companies
+      restart: always
+      depends_on:
+        - ms-config-server
+        - db
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: http://ms-config-server:7777
 
-    # ms-companies-fallback:
-    #   image: ms-companies-fallback:latest
-    #   container_name: ms-companies-fallback
-    #   restart: always
-    #   ports:
-    #     - "8787:8787"
-    #   depends_on:
-    #     - ms-config-server
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+    ms-companies-fallback:
+      image: ms-companies-fallback:latest
+      container_name: ms-companies-fallback
+      restart: always
+      ports:
+        - "8787:8787"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
 
-    # ms-report:
-    #   image: ms-report:latest
-    #   container_name: ms-report
-    #   restart: always
-    #   ports:
-    #     - "7070:7070"
-    #   depends_on:
-    #     - ms-config-server
-    #     - kafka
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
-    #     BROKER_URL: 'msg-broker:9092'
+    ms-report:
+      image: ms-report:latest
+      container_name: ms-report
+      restart: always
+      ports:
+        - "7070:7070"
+      depends_on:
+        - ms-config-server
+        - kafka
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+        BROKER_URL: 'msg-broker:9092'
 
-    # ms-report-listener:
-    #   image: image-report-listener:latest
-    #   container_name: ms-report-listener
-    #   restart: always
-    #   depends_on:
-    #     - ms-config-server
-    #     - kafka
-    #     - mongo-db
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     MONGO_HOST: 'mongo-db'
-    #     BROKER_URL: 'msg-broker:9092'
+    ms-report-listener:
+      image: image-report-listener:latest
+      container_name: ms-report-listener
+      restart: always
+      depends_on:
+        - ms-config-server
+        - kafka
+        - mongo-db
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        MONGO_HOST: 'mongo-db'
+        BROKER_URL: 'msg-broker:9092'
 
-    # ms-auth-server:
-    #   image: ms-auth:latest
-    #   container_name: ms-auth-server
-    #   restart: always
-    #   ports:
-    #     - "3030:3030"
-    #   depends_on:
-    #     - ms-config-server
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
-    #     CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
+    ms-auth-server:
+      image: ms-auth:latest
+      container_name: ms-auth-server
+      restart: always
+      ports:
+        - "3030:3030"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
+        CONFIG_SERVER_HOST: 'http://ms-config-server:7777'
 
-    # ms-gateway:
-    #   image: image-ms-gateway:latest
-    #   container_name: ms-gateway
-    #   restart: always
-    #   ports:
-    #     - "4040:4040"
-    #   depends_on:
-    #     - ms-config-server
-    #   environment:
-    #     EUREKA_URL: http://ms-registry-server:8761/eureka/
+    ms-gateway:
+      image: image-ms-gateway:latest
+      container_name: ms-gateway
+      restart: always
+      ports:
+        - "4040:4040"
+      depends_on:
+        - ms-config-server
+      environment:
+        EUREKA_URL: http://ms-registry-server:8761/eureka/
