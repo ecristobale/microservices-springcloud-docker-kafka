@@ -6,6 +6,8 @@ import com.ecristobale.report_ms.models.WebSite;
 import com.ecristobale.report_ms.repositories.CompaniesFallbackRepository;
 import com.ecristobale.report_ms.repositories.CompaniesRepository;
 import com.ecristobale.report_ms.streams.ReportPublisher;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
@@ -25,6 +27,7 @@ public class ReportServiceImpl implements ReportService {
     private final ReportHelper reportHelper;
     private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
     private final ReportPublisher reportPublisher;
+    private final ObjectMapper objectMapper;
 
     @Override
     public String makeReport(String name) {
@@ -56,7 +59,7 @@ public class ReportServiceImpl implements ReportService {
 
         circuitBreaker.run(
                 () -> this.companiesRepository.postByName(company),
-                throwable -> this.reportPublisher.publishCbReport(company.toString())
+                throwable -> this.reportPublisher.publishCbReport(this.buildEventMsg(company))
         );
 
         return "Saved";
@@ -74,5 +77,13 @@ public class ReportServiceImpl implements ReportService {
     private String makeReportFallback(String name, Throwable error) {
         log.warn("Error: {}", error.getMessage());
         return this.reportHelper.readTemplate(this.companiesFallbackRepository.getByName(name));
+    }
+
+    private String buildEventMsg(Company company) {
+        try {
+            return this.objectMapper.writeValueAsString(company);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
