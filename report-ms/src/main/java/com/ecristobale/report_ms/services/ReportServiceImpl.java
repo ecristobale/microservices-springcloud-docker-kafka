@@ -39,6 +39,8 @@ public class ReportServiceImpl implements ReportService {
     public String saveReport(String report) {
         var format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         var placeholders = this.reportHelper.getPlaceHoldersFromTemplate(report);
+        var circuitBreaker = this.circuitBreakerFactory.create("companies-circuitbreaker-event");
+
         var webSites = Stream.of(placeholders.get(3))
                 .map(webSite -> WebSite.builder().name(webSite).build())
                 .toList();
@@ -51,7 +53,12 @@ public class ReportServiceImpl implements ReportService {
                 .build();
 
         this.reportPublisher.publishReport(report);
-        this.companiesRepository.postByName(company);
+
+        circuitBreaker.run(
+                () -> this.companiesRepository.postByName(company),
+                throwable -> this.reportPublisher.publishCbReport(company.toString())
+        );
+
         return "Saved";
     }
 
