@@ -11,6 +11,9 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Spring Cloud
  * Swagger (OpenAPI)
  * Spring Cloud Streams with Kafka
+ * Kafka topics: 
+	* consumerReport for Kafka Consumer: on received invoke service for writing in MongoDB
+	* consumerCbReport for Kafka Listener (sending serialized entity as JSON string): on received invoke service for write in PostreSQL
  * Docker: dockerized each microservice and resource (Kafka, Mongo DB, Postgre DB)
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
  * Spring Security Oauth2 + JWT
@@ -40,8 +43,14 @@ The **goal** of this project is to create a **microservices** system using **Spr
 * Feign with Load Balancer to communicate between microservices:
 ![Alt text](readme-screenshots/05-microservices-feign-with-load-balancer.png?raw=true "Feign with Load Balancer")
 
-* Spring Cloud Streams with Kafka: consuming Kafka message and saving it to MongoDB
+* Spring Cloud Streams with Kafka: consuming Kafka message and saving it to MongoDB:
 ![Alt text](readme-screenshots/06-microservices-kafka-mongo.png?raw=true "Consuming Kafka message and saving it to MongoDB")
+
+* Schema: circuit breaker (fallback part) with Kafka for writing operations:
+![Alt text](readme-screenshots/09-schema-circuit-breaker-with-kafka-for-writing-operations.png?raw=true "Schema: circuit breaker with Kafka for writing operations")
+
+* Spring Cloud Streams with Kafka: Kafka listener event message received as JSON string and saving it to Postre DB:
+![Alt text](readme-screenshots/10-circuitbreaker-kafka-listener-event.png?raw=true "Kafka listener event message received as JSON string and saving it to Postre DB")
 
 * Dockerized each ms and resource from docker-compose:
 ![Alt text](readme-screenshots/07-docker-view-compose.png?raw=true "Dockerized each ms and resource")
