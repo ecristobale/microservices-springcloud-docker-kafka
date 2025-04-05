@@ -17,6 +17,7 @@ The **goal** of this project is to create a **microservices** system using **Spr
  * Docker: dockerized each microservice and resource (Kafka, Mongo DB, Postgre DB)
  * Microservices: Registry Service (Eureka), Config Service, Feign, Load Balancer, Spring Cloud Gateway, Circuit Breaker pattern
  * Spring Security Oauth2 + JWT
+ * Metrics with Zipkin: created custom span
  * DBs: PostgreSQL and MongoDB
  * Postman
  * DBeaver and Studio 3t
@@ -57,3 +58,12 @@ The **goal** of this project is to create a **microservices** system using **Spr
 
 * Dockerized each ms and resource from Docker desktop:
 ![Alt text](readme-screenshots/08-docker-view-desktop.png?raw=true "Dockerized each ms and resource")
+
+* Zipkin span in companies-crud get /company/{name}:
+![Alt text](readme-screenshots/11-telemetry-zipkin.png?raw=true "Zipkin span in companies-crud")
+
+* Zipkin query for service: companies-crud:
+![Alt text](readme-screenshots/12-telemetry-zipkin-query.png?raw=true "Zipkin query for service: companies-crud")
+
+* Zipkin custom span:
+![Alt text](readme-screenshots/13-telemetry-zipkin-custom-span.png?raw=true "Zipkin custom span")
